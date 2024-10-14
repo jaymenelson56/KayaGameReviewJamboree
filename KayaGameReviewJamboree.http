@@ -1,0 +1,6 @@
+@KayaGameReviewJamboree_HostAddress = http://localhost:5218
+
+GET {{KayaGameReviewJamboree_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
