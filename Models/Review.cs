@@ -12,9 +12,11 @@ public class Review
     [Required]
     public string? Body { get; set; }
     [Required]
-    public int UserId { get; set;}
+    public int UserProfileId { get; set;}
     [Required]
     public int ReactionId { get; set; }
-    [ForeignKey(nameof(UserId))]
-    public UserProfile UserProfile { get; set; }
+    [ForeignKey(nameof(UserProfileId))]
+    public UserProfile? UserProfile { get; set; }
+    [ForeignKey(nameof(ReactionId))]
+    public Reaction? Reaction{ get; set; }
 }
