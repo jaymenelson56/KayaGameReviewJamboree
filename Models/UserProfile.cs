@@ -22,4 +22,6 @@ public class UserProfile
 
     public IdentityUser? IdentityUser { get; set; }
 
+    public List<UserComment>? Comments { get; set; }
+
 }
