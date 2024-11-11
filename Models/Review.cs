@@ -18,4 +18,5 @@ public class Review
     public UserProfile? UserProfile { get; set; }
     [ForeignKey(nameof(ReactionId))]
     public Reaction? Reaction{ get; set; }
+    public List<UserComment>? Comments { get; set; }
 }
