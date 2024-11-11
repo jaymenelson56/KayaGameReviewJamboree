@@ -8,6 +8,10 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
 {
     private readonly IConfiguration _configuration;
     public DbSet<UserProfile> UserProfiles { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+    public DbSet<Reaction> Reactions { get; set; }
+    public DbSet<UserComment> UserComments { get; set; }
+    
 
     public KayaGameReviewJamboreeDbContext(DbContextOptions<KayaGameReviewJamboreeDbContext> context, IConfiguration config) : base(context)
     {
