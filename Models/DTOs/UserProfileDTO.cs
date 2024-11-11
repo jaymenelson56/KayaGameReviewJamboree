@@ -17,4 +17,5 @@ public class UserProfileDTO
     public string IdentityUserId { get; set; }
 
     public IdentityUser IdentityUser { get; set; }
+    public List<UserCommentDTO>? Comments { get; set; }
 }
