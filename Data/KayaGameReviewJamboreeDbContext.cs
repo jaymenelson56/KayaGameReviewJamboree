@@ -11,7 +11,7 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Review> Reviews { get; set; }
     public DbSet<Reaction> Reactions { get; set; }
     public DbSet<UserComment> UserComments { get; set; }
-    
+
 
     public KayaGameReviewJamboreeDbContext(DbContextOptions<KayaGameReviewJamboreeDbContext> context, IConfiguration config) : base(context)
     {
@@ -29,27 +29,109 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
             NormalizedName = "admin"
         });
 
-        modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser
+        modelBuilder.Entity<IdentityUser>().HasData(new IdentityUser[]
         {
-            Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-            UserName = "Administrator",
-            Email = "admina@strator.comx",
-            PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+                new IdentityUser
+                {
+                    Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
+                    UserName = "JaymeChaka",
+                    Email = "jayme@chaka.comx",
+                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+                },
+                new IdentityUser
+                {
+                    Id = "d8d76512-74f1-43bb-b1fd-87d3a8aa36df",
+                    UserName = "KayaGaba",
+                    Email = "kaya@gaba.comx",
+                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+                },
+                new IdentityUser
+                {
+                    Id = "a7d21fac-3b21-454a-a747-075f072d0cf3",
+                    UserName = "FoxGaba",
+                    Email = "fox@gaba.comx",
+                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+                },
+                new IdentityUser
+                {
+                    Id = "c806cfae-bda9-47c5-8473-dd52fd056a9b",
+                    UserName = "BongoGaba",
+                    Email = "bongo@gaba.comx",
+                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+                },
+                new IdentityUser
+                {
+                    Id = "9ce89d88-75da-4a80-9b0d-3fe58582b8e2",
+                    UserName = "JerryGaba",
+                    Email = "jerry@gaba.comx",
+                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, _configuration["AdminPassword"])
+                },
         });
 
-        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+        modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>[]
+           {
+                new IdentityUserRole<string>
+                {
+                    RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                    UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                    UserId = "d8d76512-74f1-43bb-b1fd-87d3a8aa36df"
+                },
+                new IdentityUserRole<string>
+                {
+                    RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
+                    UserId = "a7d21fac-3b21-454a-a747-075f072d0cf3"
+                },
+           });
+        modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
+        
         {
-            RoleId = "c3aaeb97-d2ba-4a53-a521-4eea61e59b35",
-            UserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f"
-        });
-        modelBuilder.Entity<UserProfile>().HasData(new UserProfile
-        {
+            new UserProfile
+            {
             Id = 1,
             IdentityUserId = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
-            FirstName = "Admina",
-            LastName = "Strator",
-            Address = "101 Main Street",
+            FirstName = "Jayme",
+            LastName = "Chaka",
+            Address = "In my own head",
+            },
+            new UserProfile
+            {
+            Id = 2,
+            IdentityUserId = "d8d76512-74f1-43bb-b1fd-87d3a8aa36df",
+            FirstName = "Kaya",
+            LastName = "Chaka",
+            Address = "In our hearts",
+            },
+            new UserProfile
+            {
+            Id = 3,
+            IdentityUserId = "a7d21fac-3b21-454a-a747-075f072d0cf3",
+            FirstName = "Fox",
+            LastName = "Chaka",
+            Address = "In our hearts",
+            },
+            new UserProfile
+            {
+            Id = 4,
+            IdentityUserId = "c806cfae-bda9-47c5-8473-dd52fd056a9b",
+            FirstName = "Bongo",
+            LastName = "Chaka",
+            Address = "In our hearts",
+            },
+            new UserProfile
+            {
+            Id = 5,
+            IdentityUserId = "9ce89d88-75da-4a80-9b0d-3fe58582b8e2",
+            FirstName = "Jerry",
+            LastName = "Chaka",
+            Address = "In our hearts",
+            },
+            
         });
+
 
     }
 }
