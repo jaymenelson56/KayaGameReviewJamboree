@@ -87,7 +87,7 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
                 },
            });
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
-        
+
         {
             new UserProfile
             {
@@ -129,7 +129,32 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
             LastName = "Chaka",
             Address = "In our hearts",
             },
-            
+
+        });
+
+        modelBuilder.Entity<Review>().HasData(new Review[]
+
+        {
+            new Review
+                    {
+                    Id = 1,
+                    UserProfileId = 2,
+                    Title = "Overcooked",
+                    Body =  "When I first got my paws on this game I wanted to eat the food, made in this game. I could not, it was frustrating, however I moved forward and found that this game was really fun with my friends, the chaotic nature of fumbling to tripping over each other in the kitchen mimicks that way my humans trip over me, I give this game a 4 out of 10 maybe next time I can eat the food.",
+                    ReactionId = 8
+                    },
+        });
+
+        modelBuilder.Entity<Reaction>().HasData(new Reaction[]
+
+        {
+            new Reaction
+            {
+                Id = 1,
+                Image = "/images/neutral.jpg",
+                AltText = "Kaya's Neutral Face",
+                Description = "Neutral"
+            }
         });
 
 
