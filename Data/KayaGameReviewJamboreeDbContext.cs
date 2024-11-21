@@ -157,6 +157,18 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
             }
         });
 
+        modelBuilder.Entity<UserComment>().HasKey(uc => new { uc.UserProfileId, uc.ReviewId });
+
+        modelBuilder.Entity<UserComment>()
+            .HasOne(uc => uc.UserProfile)
+            .WithMany(u => u.Comments)
+            .HasForeignKey(uc => uc.UserProfileId);
+
+        modelBuilder.Entity<UserComment>()
+            .HasOne(uc => uc.Review)
+            .WithMany(r => r.Comments)
+            .HasForeignKey(uc => uc.ReviewId);
+
 
     }
 }
