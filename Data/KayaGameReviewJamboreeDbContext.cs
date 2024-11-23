@@ -146,7 +146,7 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
                     new Review
                     {
                     Id = 2,
-                    UserProfileId = 2,
+                    UserProfileId = 4,
                     Title = "Portal",
                     Body =  "I love Portal, I was only disappointed at the lack of cake in the main campaign.",
                     ReactionId = 5
