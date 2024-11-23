@@ -143,6 +143,14 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
                     Body =  "When I first got my paws on this game I wanted to eat the food, made in this game. I could not, it was frustrating, however I moved forward and found that this game was really fun with my friends, the chaotic nature of fumbling to tripping over each other in the kitchen mimicks that way my humans trip over me, I give this game a 4 out of 10 maybe next time I can eat the food.",
                     ReactionId = 8
                     },
+                    new Review
+                    {
+                    Id = 2,
+                    UserProfileId = 2,
+                    Title = "Portal",
+                    Body =  "I love Portal, I was only disappointed at the lack of cake in the main campaign.",
+                    ReactionId = 5
+                    },
         });
 
         modelBuilder.Entity<Reaction>().HasData(new Reaction[]
@@ -154,7 +162,64 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
                 Image = "/images/neutral.jpg",
                 AltText = "Kaya's Neutral Face",
                 Description = "Neutral"
-            }
+            },
+            new Reaction
+            {
+                Id = 2,
+                Image = "/images/angry.jpg",
+                AltText = "Kaya's Angry Face",
+                Description = "Anger"
+            },
+            new Reaction
+            {
+                Id = 3,
+                Image = "/images/sad.jpg",
+                AltText = "Kaya's Sad Face",
+                Description = "Sadness"
+            },
+            new Reaction
+            {
+                Id = 4,
+                Image = "/images/happy.jpg",
+                AltText = "Kaya's Happy Face",
+                Description = "Happiness"
+            },
+            new Reaction
+            {
+                Id = 5,
+                Image = "/images/angry.jpg",
+                AltText = "Kaya's Angry Face",
+                Description = "Anger"
+            },
+            new Reaction
+            {
+                Id = 6,
+                Image = "/images/gimme.jpg",
+                AltText = "Kaya's face is that of a dog that wants a toy",
+                Description = "Want the toy"
+            },
+            new Reaction
+            {
+                Id = 7,
+                Image = "/images/iwantthatduck.jpg",
+                AltText = "Kaya's angry at an offscreen duck",
+                Description = "Duck Hunter"
+            },
+            new Reaction
+            {
+                Id = 8,
+                Image = "/images/meandmypal.jpg",
+                AltText = "Kaya and Fox resting together",
+                Description = "Me and my pal"
+            },
+            new Reaction
+            {
+                Id = 9,
+                Image = "/images/whatisthat.jpg",
+                AltText = "Kaya's ears are up",
+                Description = "What is that?"
+            },
+            
         });
 
         modelBuilder.Entity<UserComment>().HasKey(uc => new { uc.UserProfileId, uc.ReviewId });
