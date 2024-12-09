@@ -26,7 +26,8 @@ public class UserProfileController : ControllerBase
             FirstName = up.FirstName,
             LastName = up.LastName,
             Address = up.Address,
-            Email = up.IdentityUser.UserName,
+            UserName = up.IdentityUser.UserName,
+            Email = up.IdentityUser.Email,
             IdentityUserId = up.IdentityUserId
         }));
     }

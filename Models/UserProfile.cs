@@ -16,6 +16,8 @@ public class UserProfile
     
     [NotMapped]
     public string? Email { get; set; }
+    [NotMapped]
+    public string? UserName { get; set; }
     [Required]
 
     public string? IdentityUserId { get; set; }
