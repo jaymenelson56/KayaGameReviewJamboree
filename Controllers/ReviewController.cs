@@ -1,6 +1,8 @@
 using KayaGameReviewJamboree.Data;
 using KayaGameReviewJamboree.Models;
+using KayaGameReviewJamboree.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace KayaGameReviewJamboree.Controllers;
@@ -21,6 +23,9 @@ public class ReviewController : ControllerBase
     public IActionResult Get()
     {
         return Ok(_dbContext.Reviews
+        .Include(r => r.UserProfile)
+        .ThenInclude(up => up.IdentityUser)
+        .Include(r => r.Reaction)
         .Select(r => new Review
         {
             Id = r.Id,
@@ -28,7 +33,26 @@ public class ReviewController : ControllerBase
             Body = r.Body,
             UserProfileId = r.UserProfileId,
             ReactionId = r.ReactionId,
+            UserProfile = new UserProfile
+            {
+                Id = r.UserProfile.Id,
+                FirstName = r.UserProfile.FirstName,
+                LastName = r.UserProfile.LastName,
+                Address = r.UserProfile.Address,
+                Email = r.UserProfile.IdentityUser.Email,
+                UserName = r.UserProfile.IdentityUser.UserName,
+                IdentityUserId = r.UserProfile.IdentityUserId
 
-        }));
+            },
+            Reaction = new Reaction
+            {
+                Id = r.Reaction.Id,
+                Image = r.Reaction.Image,
+                AltText = r.Reaction.AltText,
+                Description = r.Reaction.Description
+            }
+
+        }).ToList()
+        );
     }
 }
