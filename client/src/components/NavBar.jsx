@@ -21,7 +21,7 @@ return (
     <div>
     <Navbar color="light" light fixed="true" expand="lg">
         <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
-        🧹🧼House Rules
+        Kaya Game Review Jamboree
         </NavbarBrand>
         {loggedInUser ? (
         <>
