@@ -1,0 +1,48 @@
+.home-container {
+    margin: 2rem auto;
+    width: 40%;
+    text-align: center;
+    padding: 5rem 3rem;
+    border: 1px solid var(--outline);
+    background-color: lightgray;
+    border-radius: 0.5rem;
+  }
+  
+  
+  .home-container>h1 {
+    display: flex;
+    flex-direction: column;
+    color: var(--primary);
+  }
+  
+  
+  .home-container>div {
+    font-style: italic;
+  }
+  
+  .home {
+    display: flex
+  }
+  
+  
+  .welcome-container {
+    margin: 2rem auto;
+    width: 30%;
+    text-align: center;
+    padding: 5rem 3rem;
+    border: 1px solid var(--outline);
+    background-color: lightgray;
+    border-radius: 0.5rem;
+  }
+  
+  
+  .welcome-container>h1 {
+    display: flex;
+    flex-direction: column;
+    color: var(--primary);
+  }
+  
+  
+  .welcome-container>div {
+    font-style: italic;
+  }
