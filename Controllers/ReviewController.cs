@@ -55,4 +55,22 @@ public class ReviewController : ControllerBase
         }).ToList()
         );
     }
+
+    [HttpGet("list")]
+    public IActionResult GetList()
+    {
+        {
+            return Ok(_dbContext.Reviews
+            .Include(r => r.UserProfile)
+            .ThenInclude(up => up.IdentityUser)
+            .Select(r => new ReviewListDTO
+            {
+                Id = r.Id,
+                Title = r.Title,
+                UserProfileId = r.UserProfileId,
+                UserName = r.UserProfile.IdentityUser.UserName
+            }).ToList()
+            );
+        }
+    }
 }
