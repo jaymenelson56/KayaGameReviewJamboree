@@ -4,6 +4,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import { Home } from "./Home/Home";
 import { About } from "./About/About";
+import { ReviewList } from "./Reviews/ReviewList";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -35,6 +36,16 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             }
           />
         </Route>
+      </Route>
+      <Route path="Reviews">
+        <Route
+          index
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <ReviewList />
+            </AuthorizedRoute>
+          }
+        />
       </Route>
       <Route path="*" element={<p>Whoops, nothing here...</p>} />
     </Routes>
