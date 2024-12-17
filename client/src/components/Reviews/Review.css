@@ -1,0 +1,98 @@
+.review-block {
+    display: flex;
+    margin-top: 12px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: center;
+}
+
+.list-block {
+    margin: 1rem auto;
+
+    text-align: left;
+    padding: 5rem 3rem;
+    border: 1px solid var(--outline);
+    background-color: rgba(211, 211, 211, 0.9);
+    border-radius: 0.5rem;
+
+
+}
+
+.title {
+    color: darkblue;
+}
+
+.name {
+    display: flex;
+    margin-bottom: 12px;
+    color: rgb(41, 156, 162)
+}
+
+.view-form {
+    margin: 2rem auto;
+    width: 80%;
+    padding: 5rem 3rem;
+    margin-bottom: 12px;
+    border: 1px solid var(--outline);
+    background-color: rgba(255, 255, 255, 0.87);
+    border-radius: 0.5rem;
+}
+
+.navbar-container {
+    background-color: lightgrey;
+}
+
+.button-panel {
+    display: flex;
+    margin-top: 50px;
+}
+
+.edit-btn {
+    margin-right: 12px;
+    background-color: greenyellow;
+}
+
+.post-btn {
+    background-color: yellow
+}
+
+.delete-btn {
+    margin-left: 12px;
+    background-color: lightcoral
+}
+
+.cancel-btn {
+    margin-top: 12px;
+}
+
+.header-title {
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.view-form-edit {
+    margin-bottom: 12px;
+}
+.photo {
+    margin: 1em;
+    border-radius: 50%;
+    border: 2px solid #000; 
+    width: 225px; 
+    height: 245px;
+    object-fit: cover; 
+}
+
+.btn-return {
+    display:flex;
+    justify-content: flex-end;
+    background-color: lightblue;
+}
+
+.like-section {
+    margin-top: 12px;
+}
