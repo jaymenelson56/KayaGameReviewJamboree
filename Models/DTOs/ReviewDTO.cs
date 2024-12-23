@@ -7,7 +7,8 @@ public class ReviewDTO
     public string? Body { get; set; }
     public int UserProfileId { get; set;}
     public int ReactionId { get; set; }
-    public UserProfileDTO? UserProfile { get; set; }
-    public ReactionDTO? Reaction{ get; set; }
+    public string? UserName { get; set; }
+    public string? ReactionImage{ get; set; }
+    public string? AltText{ get; set; }
     public List<UserCommentDTO>? Comments { get; set; }
 }
