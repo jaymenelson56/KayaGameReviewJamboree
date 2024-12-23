@@ -3,6 +3,7 @@ using KayaGameReviewJamboree.Models;
 using KayaGameReviewJamboree.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Update.Internal;
 
 
 namespace KayaGameReviewJamboree.Controllers;
@@ -65,11 +66,11 @@ public class ReviewController : ControllerBase
                     FirstName = c.UserProfile.FirstName,
                     LastName = c.UserProfile.LastName,
                     Email = c.UserProfile.IdentityUser.Email,
-                    UserName = c. UserProfile.IdentityUser.UserName
+                    UserName = c.UserProfile.IdentityUser.UserName
                 }
 
             }).ToList()
-            
+
 
         }).ToList()
         );
@@ -92,4 +93,50 @@ public class ReviewController : ControllerBase
             );
         }
     }
+
+    /*get review by id
+    include username
+    include reactions
+    include comments
+
+    get review body, title, id, userprofile(username, id), reaction(id, image, alt text), comments
+
+*/
+
+    [HttpGet("{id}")]
+
+    public IActionResult GetReviewById(int id)
+    {
+        {
+            ReviewDTO review = _dbContext.Reviews
+            .Where(r => r.Id == id)
+            .Include(r => r.UserProfile)
+            .ThenInclude(up => up.IdentityUser)
+            .Include(r => r.Reaction)
+            .Include(r => r.Comments)
+            .Select(r => new ReviewDTO
+            {
+                Id = r.Id,
+                Title = r.Title,
+                Body = r.Body,
+                UserProfileId = r.UserProfileId,
+                ReactionId = r.ReactionId,
+                UserName = r.UserProfile.IdentityUser.UserName,
+                ReactionImage = r.Reaction.Image,
+                AltText = r.Reaction.AltText
+
+            }).FirstOrDefault();
+            if (review == null)
+            {
+                return NotFound($"Review with ID {id} was not found.");
+            }
+
+            return Ok(review);
+        }
+    }
+
+    /*
+    create comments
+    */
+
 }
