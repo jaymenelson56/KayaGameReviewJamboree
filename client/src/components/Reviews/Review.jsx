@@ -10,13 +10,13 @@ export const Review = ({ loggedInUser }) => {
 
   useEffect(() => {
     getReview(reviewId).then((data) => {
-        const reviewObj = data[0]
-        setReview(reviewObj)
+      setReview(data);
     });
-  });
+  }, [reviewId]);
 
-  return(
-  <div className="view-form">
-    <div className="view-form-static">here</div>
-  </div>)
+  return (
+    <div className="view-form">
+      <div className="view-form-static">{review?.title}</div>
+    </div>
+  );
 };
