@@ -47,7 +47,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route path = ":id"
+        <Route path = ":reviewId"
         element = {
           <AuthorizedRoute loggedInUser={loggedInUser}>
             <Review />
