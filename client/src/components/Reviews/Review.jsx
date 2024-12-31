@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getReview, getReviewList } from "../../managers/reviewManager";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./Review.css"
 
 export const Review = ({ loggedInUser }) => {
   const [review, setReview] = useState({});
@@ -16,7 +17,9 @@ export const Review = ({ loggedInUser }) => {
 
   return (
     <div className="view-form">
-      <div className="view-form-static">{review?.title}</div>
+      <span className="view-form-static">{review?.title}</span>
+    <div>{<img src={review?.reactionImage} alt={review.altText} className="photo" />}</div>
+    <span className="view-form-static">{review.body}</span>
     </div>
   );
 };
