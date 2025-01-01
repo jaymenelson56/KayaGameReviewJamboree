@@ -135,8 +135,40 @@ public class ReviewController : ControllerBase
         }
     }
 
-    /*
-    create comments
-    */
+    [HttpPost("comments")]
+    public IActionResult CreateComment([FromBody] CreateCommentDTO createCommentDTO)
+    {
+        if (createCommentDTO == null)
+        {
+            return BadRequest("Comment data is required.");
+        }
+
+        Review review = _dbContext.Reviews.FirstOrDefault(r => r.Id == createCommentDTO.ReviewId);
+        UserProfile user = _dbContext.UserProfiles.FirstOrDefault(up => up.Id == createCommentDTO.UserProfileId);
+
+        if (review == null)
+        {
+            return NotFound($"Review with ID {createCommentDTO.ReviewId} was not found.");
+        }
+
+        if (user == null)
+        {
+            return NotFound($"User with ID {createCommentDTO.UserProfileId} was not found");
+        }
+
+        UserComment newComment = new UserComment
+        {
+            Body = createCommentDTO.body,
+            ReviewId = createCommentDTO.ReviewId,
+            UserProfileId = createCommentDTO.UserProfileId,
+            
+        };
+
+        
+        _dbContext.UserComments.Add(newComment);
+        _dbContext.SaveChanges();
+
+        return CreatedAtAction("GetReviewById", new { id = createCommentDTO.ReviewId }, newComment);
+    }
 
 }
