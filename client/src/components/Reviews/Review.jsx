@@ -17,7 +17,7 @@ export const Review = ({ loggedInUser }) => {
 
   return (
     <div className="view-form">
-      <span className="view-form-static">{review?.title}</span>
+      <header className="header-title">{review?.title}</header>
     <div>{<img src={review?.reactionImage} alt={review.altText} className="photo" />}</div>
     <span className="view-form-static">{review.body}</span>
     </div>
