@@ -20,6 +20,12 @@ export const Review = ({ loggedInUser }) => {
       <header className="header-title">{review?.title}</header>
     <div>{<img src={review?.reactionImage} alt={review.altText} className="photo" />}</div>
     <span className="view-form-static">{review.body}</span>
+    <div>
+      <h2>Comments</h2>
+      {review.comments.map((comment) => (
+        <span>{comment.userName}: {comment.body}<br /></span>
+      ))}
+    </div>
     </div>
   );
 };
