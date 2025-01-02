@@ -94,14 +94,7 @@ public class ReviewController : ControllerBase
         }
     }
 
-    /*get review by id
-    include username
-    include reactions
-    include comments
 
-    get review body, title, id, userprofile(username, id), reaction(id, image, alt text), comments
-
-*/
 
     [HttpGet("{id}")]
 
@@ -171,10 +164,10 @@ public class ReviewController : ControllerBase
             Body = createCommentDTO.body,
             ReviewId = createCommentDTO.ReviewId,
             UserProfileId = createCommentDTO.UserProfileId,
-            
+
         };
 
-        
+
         _dbContext.UserComments.Add(newComment);
         _dbContext.SaveChanges();
 
