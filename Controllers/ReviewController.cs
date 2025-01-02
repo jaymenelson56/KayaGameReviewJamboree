@@ -112,8 +112,10 @@ public class ReviewController : ControllerBase
             .Where(r => r.Id == id)
             .Include(r => r.UserProfile)
             .ThenInclude(up => up.IdentityUser)
-            .Include(r => r.Reaction)
             .Include(r => r.Comments)
+            .ThenInclude(c => c.UserProfile)
+            .ThenInclude(uc => uc.IdentityUser)
+            .Include(r => r.Reaction)
             .Select(r => new ReviewDTO
             {
                 Id = r.Id,
@@ -123,7 +125,15 @@ public class ReviewController : ControllerBase
                 ReactionId = r.ReactionId,
                 UserName = r.UserProfile.IdentityUser.UserName,
                 ReactionImage = r.Reaction.Image,
-                AltText = r.Reaction.AltText
+                AltText = r.Reaction.AltText,
+                Comments = r.Comments.Select(c => new DisplayedCommentDTO
+                {
+                    Body = c.Body,
+                    ReviewId = c.ReviewId,
+                    UserProfileId = c.UserProfileId,
+                    UserName = c.UserProfile.IdentityUser.UserName
+
+                }).ToList()
 
             }).FirstOrDefault();
             if (review == null)
