@@ -50,7 +50,7 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
         <Route path = ":reviewId"
         element = {
           <AuthorizedRoute loggedInUser={loggedInUser}>
-            <Review />
+            <Review loggedInUser={loggedInUser}/>
           </AuthorizedRoute>
         }
         />

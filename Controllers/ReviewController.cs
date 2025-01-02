@@ -94,14 +94,7 @@ public class ReviewController : ControllerBase
         }
     }
 
-    /*get review by id
-    include username
-    include reactions
-    include comments
 
-    get review body, title, id, userprofile(username, id), reaction(id, image, alt text), comments
-
-*/
 
     [HttpGet("{id}")]
 
@@ -112,8 +105,10 @@ public class ReviewController : ControllerBase
             .Where(r => r.Id == id)
             .Include(r => r.UserProfile)
             .ThenInclude(up => up.IdentityUser)
-            .Include(r => r.Reaction)
             .Include(r => r.Comments)
+            .ThenInclude(c => c.UserProfile)
+            .ThenInclude(uc => uc.IdentityUser)
+            .Include(r => r.Reaction)
             .Select(r => new ReviewDTO
             {
                 Id = r.Id,
@@ -123,7 +118,15 @@ public class ReviewController : ControllerBase
                 ReactionId = r.ReactionId,
                 UserName = r.UserProfile.IdentityUser.UserName,
                 ReactionImage = r.Reaction.Image,
-                AltText = r.Reaction.AltText
+                AltText = r.Reaction.AltText,
+                Comments = r.Comments.Select(c => new DisplayedCommentDTO
+                {
+                    Body = c.Body,
+                    ReviewId = c.ReviewId,
+                    UserProfileId = c.UserProfileId,
+                    UserName = c.UserProfile.IdentityUser.UserName
+
+                }).ToList()
 
             }).FirstOrDefault();
             if (review == null)
@@ -161,10 +164,10 @@ public class ReviewController : ControllerBase
             Body = createCommentDTO.body,
             ReviewId = createCommentDTO.ReviewId,
             UserProfileId = createCommentDTO.UserProfileId,
-            
+
         };
 
-        
+
         _dbContext.UserComments.Add(newComment);
         _dbContext.SaveChanges();
 

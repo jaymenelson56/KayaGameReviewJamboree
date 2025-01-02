@@ -10,5 +10,5 @@ public class ReviewDTO
     public string? UserName { get; set; }
     public string? ReactionImage{ get; set; }
     public string? AltText{ get; set; }
-    public List<UserCommentDTO>? Comments { get; set; }
+    public List<DisplayedCommentDTO>? Comments { get; set; }
 }
