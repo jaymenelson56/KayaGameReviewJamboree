@@ -219,10 +219,11 @@ public class KayaGameReviewJamboreeDbContext : IdentityDbContext<IdentityUser>
                 AltText = "Kaya's ears are up",
                 Description = "What is that?"
             },
-            
+
         });
 
-        modelBuilder.Entity<UserComment>().HasKey(uc => new { uc.UserProfileId, uc.ReviewId });
+        modelBuilder.Entity<UserComment>()
+    .HasKey(uc => uc.Id); // Define Id as the primary key
 
         modelBuilder.Entity<UserComment>()
             .HasOne(uc => uc.UserProfile)

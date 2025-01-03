@@ -163,19 +163,27 @@ namespace KayaGameReviewJamboree.Migrations
 
             modelBuilder.Entity("KayaGameReviewJamboree.Models.UserComment", b =>
                 {
-                    b.Property<int>("UserProfileId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    b.Property<int>("ReviewId")
-                        .HasColumnType("integer");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Body")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("UserProfileId", "ReviewId");
+                    b.Property<int>("ReviewId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ReviewId");
+
+                    b.HasIndex("UserProfileId");
 
                     b.ToTable("UserComments");
                 });
@@ -380,13 +388,13 @@ namespace KayaGameReviewJamboree.Migrations
                         {
                             Id = "dbc40bc6-0829-4ac5-a3ed-180f5e916a5f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9f3d6196-71b6-49cc-8c35-afd04315a1f2",
+                            ConcurrencyStamp = "8e41dd8a-f494-4b7a-9b6c-3aa15ddb7959",
                             Email = "jayme@chaka.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEARe/X1GPxO4GiJSi0uSwpq44OdMfItlhMK408MChY5BcJmNIui94gNEhYRmM6W/5g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIfE/vW+i94q21OiieqRFxf9Qr7SYTaOW/cBM5dRy5dOxZXX8SWBuPlFgLwzbtEhiA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "907307bf-21d0-4218-b504-c68dd04b7136",
+                            SecurityStamp = "9f3ff085-04d7-4829-8dd2-6460edfef331",
                             TwoFactorEnabled = false,
                             UserName = "JaymeChaka"
                         },
@@ -394,13 +402,13 @@ namespace KayaGameReviewJamboree.Migrations
                         {
                             Id = "d8d76512-74f1-43bb-b1fd-87d3a8aa36df",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4cf71467-9b0f-4a0c-9b9c-9decfb38849d",
+                            ConcurrencyStamp = "85f6acfc-b0cd-4698-917e-af9307154eb6",
                             Email = "kaya@gaba.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEO3xOFTdnsO9SoOHP8+sBT2Ve/FS8Qd5CBCAQqL0TBGys41tCcUtTk7a0w5ievA6vw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE3UpExW7Ln9ZFaYyOFYSv0W2lzEHOPpzyYO+tyavqRDim7X34NVs676A2EqZ21Yxg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6624592e-5fea-4371-b30f-7440137a0b67",
+                            SecurityStamp = "eb91513a-0e0a-4e46-b0e3-024642dd0926",
                             TwoFactorEnabled = false,
                             UserName = "KayaGaba"
                         },
@@ -408,13 +416,13 @@ namespace KayaGameReviewJamboree.Migrations
                         {
                             Id = "a7d21fac-3b21-454a-a747-075f072d0cf3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "edc1e223-fb86-4029-b02a-a9c2af913967",
+                            ConcurrencyStamp = "59e62f76-6cb6-414d-b14e-b5fc9895e577",
                             Email = "fox@gaba.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAECN78Zg29GZ2rRGm9DPO6umiO3LeVYLEkRdOF7eXugChfU0MoQ0a8Np0QJwG0BARtg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFZTknSFfbEBk7hSyQ8rF/7m5sN5HGwTjJQk5aQnR+LGed3JYe1prqc7kZob6uc/pA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "83c694b1-982a-4e65-a9be-3c9a7ddf2d4d",
+                            SecurityStamp = "22ecc079-da2e-40a8-bb36-80563cf4f18b",
                             TwoFactorEnabled = false,
                             UserName = "FoxGaba"
                         },
@@ -422,13 +430,13 @@ namespace KayaGameReviewJamboree.Migrations
                         {
                             Id = "c806cfae-bda9-47c5-8473-dd52fd056a9b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7c53b9e6-2c3c-4561-8e4e-c3ee730bb4ee",
+                            ConcurrencyStamp = "7b4c6d8d-978b-45cb-950f-a28afcdb6ffc",
                             Email = "bongo@gaba.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGl0Fhz/bu21VEOmivDOTrJA38DyKbIBJCOuo68+3jutHnlGilvGcDrl0iU7SxXxHg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKQcKi/Oo4m52+HzL/tPHBCloIP4DvQrjMER5bi2DuRQ4ChV/yJzJLODfP6MWBmOtg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "dfcf8899-c0ad-45f0-868d-c33e9a3278c8",
+                            SecurityStamp = "53bdd59e-1f05-4e64-93d0-c7f0793bd262",
                             TwoFactorEnabled = false,
                             UserName = "BongoGaba"
                         },
@@ -436,13 +444,13 @@ namespace KayaGameReviewJamboree.Migrations
                         {
                             Id = "9ce89d88-75da-4a80-9b0d-3fe58582b8e2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "39e697e9-def6-45fc-bbf6-20f62efcee4b",
+                            ConcurrencyStamp = "2601660f-4571-481a-9655-0e709cc9784e",
                             Email = "jerry@gaba.comx",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEFQaae2MMq7nJk84xdPNTCJpDyGKVR/6RBLoMTOrHA6GQhK1+w2g5X8XpRpomoM2hw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECZxLpoRWMrCV4nCnvnCjgOo0rXCCbLoUXi1DwucmZ5j9qaZW1e+2wJ6eCOamyf8VQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "86b3867b-34e5-43f5-8dc9-b2e336f9526e",
+                            SecurityStamp = "509086d2-9be7-4dce-808f-5e54bfe34602",
                             TwoFactorEnabled = false,
                             UserName = "JerryGaba"
                         });
