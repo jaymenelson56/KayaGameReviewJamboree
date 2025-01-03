@@ -121,6 +121,7 @@ public class ReviewController : ControllerBase
                 AltText = r.Reaction.AltText,
                 Comments = r.Comments.Select(c => new DisplayedCommentDTO
                 {
+                    Id = c.Id,
                     Body = c.Body,
                     ReviewId = c.ReviewId,
                     UserProfileId = c.UserProfileId,
@@ -171,7 +172,7 @@ public class ReviewController : ControllerBase
         _dbContext.UserComments.Add(newComment);
         _dbContext.SaveChanges();
 
-        return CreatedAtAction("GetReviewById", new { id = createCommentDTO.ReviewId }, newComment);
+        return CreatedAtAction("GetReviewById", new { id = createCommentDTO.Id }, newComment);
     }
 
 }

@@ -5,7 +5,7 @@ namespace KayaGameReviewJamboree.Models;
 
 public class UserComment
 {
-    
+    public int Id { get; set; }
     [Required]
     public string? Body { get; set; }
     [Required]
@@ -15,5 +15,5 @@ public class UserComment
     [ForeignKey(nameof(ReviewId))]
     public Review? Review { get; set; }
     [ForeignKey(nameof(UserProfileId))]
-    public UserProfile? UserProfile { get; set;}
-}   
+    public UserProfile? UserProfile { get; set; }
+}

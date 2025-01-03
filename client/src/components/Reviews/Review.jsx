@@ -52,7 +52,7 @@ export const Review = ({ loggedInUser }) => {
         <h2>Comments</h2>
         {review.comments && review.comments.length > 0 ? (
           review.comments.map((comment) => (
-            <span>
+            <span key = {comment.id}>
               {comment.userName}: {comment.body}
               <br />
             </span>
