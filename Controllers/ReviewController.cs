@@ -175,4 +175,26 @@ public class ReviewController : ControllerBase
         return CreatedAtAction("GetReviewById", new { id = createCommentDTO.Id }, newComment);
     }
 
+    [HttpPost]
+
+    public IActionResult CreateReview([FromBody] CreateReviewDTO createReviewDTO)
+    {
+        if (createReviewDTO == null)
+        {
+            return BadRequest("Review data is required.");
+        }
+        Review newReview = new Review
+        {
+            Title = createReviewDTO.Title,
+            Body = createReviewDTO.Body,
+            UserProfileId = createReviewDTO.UserProfileId,
+            ReactionId = createReviewDTO.ReactionId,
+        };
+
+        _dbContext.Reviews.Add(newReview);
+        _dbContext.SaveChanges();
+
+        return CreatedAtAction("GetReviewById", new { id = createReviewDTO.Id }, newReview);
+    }
+
 }
