@@ -6,6 +6,7 @@ import { Home } from "./Home/Home";
 import { About } from "./About/About";
 import { ReviewList } from "./Reviews/ReviewList";
 import { Review } from "./Reviews/Review";
+import { CreateReview } from "./Reviews/CreateReview";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -47,12 +48,21 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
             </AuthorizedRoute>
           }
         />
-        <Route path = ":reviewId"
-        element = {
-          <AuthorizedRoute loggedInUser={loggedInUser}>
-            <Review loggedInUser={loggedInUser}/>
-          </AuthorizedRoute>
-        }
+        <Route
+          path=":reviewId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <Review loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="create"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <CreateReview loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
         />
       </Route>
       <Route path="*" element={<p>Whoops, nothing here...</p>} />
