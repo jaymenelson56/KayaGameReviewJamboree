@@ -19,3 +19,15 @@ export const createNewComment = async (comment) => {
   const data = await response.json();
   return data;
 };
+
+export const createNewReview = async (review) => {
+  const response = await fetch(_apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(review),
+  });
+  const data = await response.json();
+  return data;
+};

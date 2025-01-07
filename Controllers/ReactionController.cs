@@ -1,5 +1,6 @@
 using KayaGameReviewJamboree.Data;
 using KayaGameReviewJamboree.Models;
+using KayaGameReviewJamboree.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KayaGameReviewJamboree.Controllers;
@@ -20,7 +21,7 @@ public class ReactionController : ControllerBase
     public IActionResult Get()
     {
         return Ok(_dbContext.Reactions
-        .Select(r => new Reaction
+        .Select(r => new ReactionDTO
         {
             Id = r.Id,
             Image = r.Image,
