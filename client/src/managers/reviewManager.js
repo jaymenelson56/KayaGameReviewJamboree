@@ -31,3 +31,19 @@ export const createNewReview = async (review) => {
   const data = await response.json();
   return data;
 };
+
+export const editExistingReview = async (review, id) => {
+  return fetch(_apiUrl + `/${id}`, {
+    method: "PUT",
+    body: review,
+  }).then((res) => res.json());
+};
+
+export const deleteReview = async (id) => {
+  const response = await fetch(_apiUrl + `/${id}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to delete review");
+  }
+};
