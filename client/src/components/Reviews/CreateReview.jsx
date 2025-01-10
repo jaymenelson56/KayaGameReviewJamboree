@@ -46,7 +46,7 @@ export const CreateReview = ({ loggedInUser }) => {
   };
 
   const handleReactChange = (event) => {
-    setNewpost({ ...newpost, reactionId: event.target.value });
+    setNewpost({ ...newpost, reactionId: parseInt(event.target.value) });
   };
   return (
     <form className="view-form">
@@ -88,7 +88,7 @@ export const CreateReview = ({ loggedInUser }) => {
             {selectedImage && (
               <img
                 src={selectedImage.image}
-                alt={selectedImage.alt}
+                alt={selectedImage.altText}
                 className="photo"
               />
             )}

@@ -197,4 +197,44 @@ public class ReviewController : ControllerBase
         return CreatedAtAction("GetReviewById", new { id = createReviewDTO.Id }, newReview);
     }
 
+    [HttpPut("{id}")]
+    public IActionResult EditReview(int id, [FromBody] EditReviewDTO editReviewDTO)
+    {
+        if (editReviewDTO == null || id <= 0)
+        {
+            return BadRequest("Invalid data provided.");
+        }
+
+
+        Review review = _dbContext.Reviews.FirstOrDefault(r => r.Id == id);
+        if (review == null)
+        {
+            return NotFound($"Review with ID {id} not found.");
+        }
+
+
+        review.Title = editReviewDTO.Title ?? review.Title;
+        review.Body = editReviewDTO.Body ?? review.Body;
+        review.ReactionId = editReviewDTO.ReactionId;
+
+        _dbContext.Reviews.Update(review);
+        _dbContext.SaveChanges();
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+
+    public IActionResult DeleteReview(int id)
+    {
+        Review? review = _dbContext.Reviews.Find(id);
+        if (review == null)
+        {
+            return NotFound($"Review with ID {id} not found.");
+        }
+        _dbContext.Reviews.Remove(review);
+        _dbContext.SaveChanges();
+        return NoContent();
+    }
+
 }
