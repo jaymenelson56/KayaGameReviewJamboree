@@ -35,7 +35,7 @@ export const createNewReview = async (review) => {
 export const editExistingReview = async (review, id) => {
   return fetch(_apiUrl + `/${id}`, {
     method: "PUT",
-    body: review,
+    body: JSON.stringify(review),
   }).then((res) => res.json());
 };
 
