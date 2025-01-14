@@ -33,10 +33,14 @@ export const createNewReview = async (review) => {
 };
 
 export const editExistingReview = async (review, id) => {
-  return fetch(_apiUrl + `/${id}`, {
+  return await fetch(_apiUrl + `/${id}`, {
     method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(review),
-  }).then((res) => res.json());
+  });
+  return null;
 };
 
 export const deleteReview = async (id) => {

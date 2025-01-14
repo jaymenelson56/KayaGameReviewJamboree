@@ -45,7 +45,6 @@ export const EditReview = ({ loggedInUser }) => {
       body: review.body,
       reactionId: review.reactionId,
     };
-
     editExistingReview(editedReview, reviewId).then(() => {
       navigate("/reviews");
     });
