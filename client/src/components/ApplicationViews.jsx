@@ -7,6 +7,7 @@ import { About } from "./About/About";
 import { ReviewList } from "./Reviews/ReviewList";
 import { Review } from "./Reviews/Review";
 import { CreateReview } from "./Reviews/CreateReview";
+import { EditReview } from "./Reviews/EditReview";
 
 export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
   return (
@@ -61,6 +62,14 @@ export default function ApplicationViews({ loggedInUser, setLoggedInUser }) {
           element={
             <AuthorizedRoute loggedInUser={loggedInUser}>
               <CreateReview loggedInUser={loggedInUser} />
+            </AuthorizedRoute>
+          }
+        />
+        <Route
+          path="edit/:reviewId"
+          element={
+            <AuthorizedRoute loggedInUser={loggedInUser}>
+              <EditReview loggedInUser={loggedInUser} />
             </AuthorizedRoute>
           }
         />

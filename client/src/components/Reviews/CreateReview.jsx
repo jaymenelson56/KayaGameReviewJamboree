@@ -62,18 +62,20 @@ export const CreateReview = ({ loggedInUser }) => {
               const newPostCopy = { ...newpost };
               newPostCopy.title = event.target.value;
               setNewpost(newPostCopy);
+              className="form-control"
             }}
           />
         </div>
       </fieldset>
       <fieldset>
-        <div>
+        <div className="form-group">
           <label htmlFor="reaction.description">Reaction</label>
           <select
             value={newpost.reactionId}
             name="reaction.description"
             id="reaction.description"
             onChange={handleReactChange}
+            className="form-control"
           >
             <option value="" hidden>
               Select Reaction...
@@ -84,7 +86,7 @@ export const CreateReview = ({ loggedInUser }) => {
               </option>
             ))}
           </select>
-          <div>
+          <div className="form-group">
             {selectedImage && (
               <img
                 src={selectedImage.image}
@@ -106,6 +108,7 @@ export const CreateReview = ({ loggedInUser }) => {
             rows={5}
             cols={30}
             name="review"
+            className="form-control"
             onChange={(event) => {
               const newPostCopy = { ...newpost };
               newPostCopy.body = event.target.value;
@@ -115,7 +118,7 @@ export const CreateReview = ({ loggedInUser }) => {
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset className="form-actions">
         <div>
           <button onClick={handleSave}>Submit</button>
         </div>
