@@ -48,6 +48,7 @@ export const Review = ({ loggedInUser }) => {
         }
       </div>
       <span className="view-form-static">{review.body}</span>
+      {/* Delete and Edit Button needed here for review author */}
       <div>
         <h2>Comments</h2>
         {review.comments && review.comments.length > 0 ? (
