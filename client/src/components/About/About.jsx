@@ -24,6 +24,7 @@ export const About = () => {
         probably been a lot harsher on these games, but Kaya always loved to
         play. We love you Kaya.
       </div>
+      {/* Links to memoriam page for Bongo, Fox, and Jerry included here */}
     </div>
   );
 };
