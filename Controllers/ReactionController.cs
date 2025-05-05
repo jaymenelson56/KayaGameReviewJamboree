@@ -20,6 +20,8 @@ public class ReactionController : ControllerBase
 
     public IActionResult Get()
     {
+        try
+        {
         return Ok(_dbContext.Reactions
         .Select(r => new ReactionDTO
         {
@@ -28,5 +30,10 @@ public class ReactionController : ControllerBase
             AltText = r.AltText,
             Description = r.Description
         }));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred while retrieving reactions: {ex.Message}");
+        }
     }
 }
