@@ -18,17 +18,26 @@ public class UserProfileController : ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        return Ok(_dbContext.UserProfiles
-        .Include(up => up.IdentityUser)
-        .Select(up => new UserProfile
+        try
         {
-            Id = up.Id,
-            FirstName = up.FirstName,
-            LastName = up.LastName,
-            Address = up.Address,
-            UserName = up.IdentityUser.UserName,
-            Email = up.IdentityUser.Email,
-            IdentityUserId = up.IdentityUserId
-        }));
+            List<UserProfile> userProfiles = _dbContext.UserProfiles
+                   .Include(up => up.IdentityUser)
+                   .Select(up => new UserProfile
+                   {
+                       Id = up.Id,
+                       FirstName = up.FirstName,
+                       LastName = up.LastName,
+                       Address = up.Address,
+                       UserName = up.IdentityUser.UserName,
+                       Email = up.IdentityUser.Email,
+                       IdentityUserId = up.IdentityUserId
+                   }).ToList();
+
+            return Ok(userProfiles);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"An error occurred while retrieving user profiles: {ex.Message}");
+        }
     }
 }
