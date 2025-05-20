@@ -29,6 +29,7 @@ export default function Login({ setLoggedInUser }) {
         <Input
           invalid={failedLogin}
           type="text"
+          data-test="email-form"
           value={email}
           onChange={(e) => {
             setFailedLogin(false);
@@ -41,6 +42,7 @@ export default function Login({ setLoggedInUser }) {
         <Input
           invalid={failedLogin}
           type="password"
+          data-test="password-form"
           value={password}
           onChange={(e) => {
             setFailedLogin(false);
@@ -50,7 +52,7 @@ export default function Login({ setLoggedInUser }) {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
 
-      <Button color="primary" onClick={handleSubmit}>
+      <Button data-test="login-button" color="primary" onClick={handleSubmit}>
         Login
       </Button>
       <p>
