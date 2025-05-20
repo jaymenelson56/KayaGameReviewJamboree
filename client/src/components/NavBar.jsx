@@ -20,7 +20,7 @@ export default function NavBar({ loggedInUser, setLoggedInUser }) {
   return (
     <div>
       <Navbar color="light" light fixed="true" expand="lg">
-        <NavbarBrand className="mr-auto" tag={RRNavLink} to="/">
+        <NavbarBrand data-test="navbar-header" className="mr-auto" tag={RRNavLink} to="/">
           Kaya Game Review Jamboree
         </NavbarBrand>
 
